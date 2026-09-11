@@ -4,10 +4,20 @@ public class Main {
 
         System.out.println("Library Management System");
 
+        Library library = new Library();
+
         Book book1 = new Book(
                 "The Hobbit",
                 "J.R.R. Tolkien",
                 "9780261103303"
+        );
+
+        EBook ebook1 = new EBook(
+                "Effective Java",
+                "Joshua Bloch",
+                "9780134685991",
+                12.5,
+                "PDF"
         );
 
         Student student1 = new Student(
@@ -16,25 +26,22 @@ public class Main {
                 "fouad@example.com"
         );
 
-        EBook ebook1 = new EBook(
-        "Effective Java",
-        "Joshua Bloch",
-        "9780134685991",
-        12.5,
-        "PDF"
-);
+        library.addBook(book1);
+        library.addBook(ebook1);
+        library.addStudent(student1);
 
-System.out.println(ebook1);
+        library.listBooks();
+        library.listStudents();
 
-        System.out.println(book1);
-        System.out.println(student1);
+    Book found = library.findBookByIsbn("9780261103303");
+    System.out.println("Found: " + found);
 
-        student1.borrowBook(book1);
-        System.out.println(book1);
-        System.out.println(student1);
+    Book notFound = library.findBookByIsbn("0000000000000");
+    System.out.println("Not found: " + notFound);
 
-        student1.returnBook(book1);
-        System.out.println(book1);
-        System.out.println(student1);
+
     }
+
+    
+
 }

@@ -13,7 +13,7 @@ public class Library {
 
     public void addBook(Book book) {
         books.add(book);
-        System.out.println("Book added: " + book.getTitle() + "successfully");
+        System.out.println("Book added: " + book.getTitle() + " successfully");
     }
     public void addStudent(Student student) {
         students.add(student);
@@ -41,6 +41,24 @@ public void listStudents() {
     for (Student student : students) {
         System.out.println(student);
     }
+}
+
+public Book findBookByIsbn(String isbn) {
+    for (Book book : books) {
+        if (book.getIsbn().equals(isbn)) {
+            return book;
+        }
+    }
+    return null;
+}
+
+public Student findStudentById(int id) {
+    for (Student student : students) {
+        if (student.getId() == id) {
+            return student;
+        }
+    }
+    return null;
 }
 
 }
