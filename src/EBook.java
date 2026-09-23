@@ -20,6 +20,8 @@ public class EBook extends Book {
     @Override
     public String toString() {
         return String.format("[%s] %s by %s | Available: %s | File Size: %.2f MB | Format: %s",
-                getIsbn(), getTitle(), getAuthor(), isAvailable() ? "Yes" : "No", fileSizeMB, format);
+                getIsbn(), getTitle(), getAuthor(),
+                isAvailable() ? "Yes" : "No",
+                fileSizeMB, format);
     }
 }

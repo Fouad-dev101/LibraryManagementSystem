@@ -1,36 +1,40 @@
 public class Book {
 
-    private String title;    // The title of the book
-    private String author;   // The author's name
-    private String isbn;     // The ISBN number of the book/ebook
-    private boolean available; // Availability status of the book/ebook
-
+    private String title;      // The title of the book
+    private String author;     // The author's name
+    private String isbn;       // The ISBN number of the book/ebook
+    private boolean available; // Availability status
 
     public Book(String title, String author, String isbn) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
-        this.available = true; // By default, the book is available
+        this.available = true;
     }
 
     public String getTitle() {
         return title;
     }
+
     public String getAuthor() {
-        return author;  
+        return author;
     }
+
     public String getIsbn() {
         return isbn;
     }
+
     public boolean isAvailable() {
         return available;
     }
 
-
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
 
     public void borrow() {
         if (available) {
-            available = false; // Mark the book as borrowed
+            available = false;
             System.out.println("You have borrowed: " + title);
         } else {
             System.out.println("Sorry, this book is currently unavailable.");
@@ -39,7 +43,7 @@ public class Book {
 
     public void returnBook() {
         if (!available) {
-            available = true; // Mark the book as returned
+            available = true;
             System.out.println("You have returned: " + title);
         } else {
             System.out.println("This book was not borrowed.");
@@ -49,7 +53,6 @@ public class Book {
     @Override
     public String toString() {
         return String.format("[%s] %s by %s | Available: %s",
-            isbn, title, author, available ? "Yes" : "No");
+                isbn, title, author, available ? "Yes" : "No");
     }
-
 }

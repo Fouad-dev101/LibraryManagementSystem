@@ -10,8 +10,12 @@ public class Main {
         System.out.println("   Library Management System");
         System.out.println("================================");
 
+        // Load saved data on startup
+        library.loadFromFile();
+
         boolean running = true;
         while (running) {
+            System.out.println();
             printMenu();
             int choice = readInt("Choose an option: ");
 
@@ -24,13 +28,19 @@ public class Main {
                 case 6 -> borrowBook();
                 case 7 -> returnBook();
                 case 8 -> findBook();
-                case 9 -> {
+                case 9 -> library.saveToFile();
+                case 10 -> library.loadFromFile();
+                case 11 -> {
+                    System.out.print("Save before exit? (y/n): ");
+                    String ans = scanner.nextLine().trim().toLowerCase();
+                    if (ans.equals("y") || ans.equals("yes")) {
+                        library.saveToFile();
+                    }
                     System.out.println("Goodbye!");
                     running = false;
                 }
                 default -> System.out.println("Invalid option. Try again.");
             }
-            System.out.println();
         }
 
         scanner.close();
@@ -48,7 +58,9 @@ public class Main {
         System.out.println("6. Borrow Book");
         System.out.println("7. Return Book");
         System.out.println("8. Find Book by ISBN");
-        System.out.println("9. Exit");
+        System.out.println("9. Save Library");
+        System.out.println("10. Load Library");
+        System.out.println("11. Exit");
     }
 
     // ---------- Actions ----------

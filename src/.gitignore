@@ -1,6 +1,21 @@
+# Compiled Java
 *.class
 *.jar
+*.war
+
+# IDE
 .vscode/
 .idea/
-out/
+*.iml
+.settings/
+.classpath
+.project
 bin/
+out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Library data (uncomment if you don't want to commit your data)
+# library.txt
