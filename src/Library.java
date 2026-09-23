@@ -22,43 +22,59 @@ public class Library {
 
 
     public void listBooks() {
-    if (books.isEmpty()) {
-        System.out.println("No books in the library.");
-        return;
-    }
-    System.out.println("--- Books ---");
-    for (Book book : books) {
-        System.out.println(book);
-    }
-}
-
-public void listStudents() {
-    if (students.isEmpty()) {
-        System.out.println("No students registered.");
-        return;
-    }
-    System.out.println("--- Students ---");
-    for (Student student : students) {
-        System.out.println(student);
-    }
-}
-
-public Book findBookByIsbn(String isbn) {
-    for (Book book : books) {
-        if (book.getIsbn().equals(isbn)) {
-            return book;
+        if (books.isEmpty()) {
+            System.out.println("No books in the library.");
+            return;
+        }
+        System.out.println("--- Books ---");
+        for (Book book : books) {
+            System.out.println(book);
         }
     }
-    return null;
-}
 
-public Student findStudentById(int id) {
-    for (Student student : students) {
-        if (student.getId() == id) {
-            return student;
+    public void listStudents() {
+        if (students.isEmpty()) {
+            System.out.println("No students registered.");
+            return;
+        }
+        System.out.println("--- Students ---");
+        for (Student student : students) {
+            System.out.println(student);
         }
     }
-    return null;
-}
+
+    public Book findBookByIsbn(String isbn) {
+        for (Book book : books) {
+            if (book.getIsbn().equals(isbn)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public Student findStudentById(int id) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+
+    public void borrowBook(int studentId, String isbn) {
+
+        Student student = findStudentById(studentId);
+        Book book = findBookByIsbn(isbn);
+
+
+        if (student == null) {
+            System.out.println("There is no Student with this ID");
+        }else if (book == null) {
+            System.out.println("There is no Book in the Library with this ISBN ");
+        }else {
+            student.borrowBook(book);
+        }
+    }
 
 }
